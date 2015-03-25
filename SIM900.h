@@ -24,7 +24,7 @@ public:
 	 *	@param	IN	apn user of your provider. Usually is ""
 	 *	@param	IN	apn password of your privider. Usually is ""
 	 *	@param	IN	enable pin for power on the board.
-	 *	@param	IN	serial port of your arduino. (0 for Serial, 1 for Serial1, etc.). Defaults 0
+	 *	@param	IN	serial port of your arduino.
 	 *	@param	IN	baudRate for communications. Defaults 115200.
 	 */
 	Connection( const char * pinCode, 
@@ -32,7 +32,7 @@ public:
 				const char * apnUser = "", 
 				const char * apnPass = "", 
 				const uint8_t & enablePin = 2, 
-				uint8_t serialNumber = 0, 
+				HardwareSerial &serialPort = Serial, 
 				uint32_t baudRate = 115200 );
 	
 

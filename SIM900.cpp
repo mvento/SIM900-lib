@@ -1,4 +1,4 @@
-﻿/** SIM900 Basic communication library for SIM900 gsm module. 
+/** SIM900 Basic communication library for SIM900 gsm module. 
  *
  *	This library provide easy way to make GET and POST petitions to a web server. Use to interactue Arduino with restful apis, webs, etc.
  *
@@ -16,7 +16,7 @@ Connection::Connection(	const char * pinCode,
 						const char * apnUser, 
 						const char * apnPass, 
 						const uint8_t & enablePin, 
-						uint8_t serialNumber, 
+						HardwareSerial & serialPort,
 						uint32_t baudRate ):
 	_pinCode( pinCode ),
 	_apnName( apnName ),
@@ -30,28 +30,8 @@ Connection::Connection(	const char * pinCode,
 {
 	pinMode( enablePin, OUTPUT );
 	
-	sim900Serial = NULL;
-	switch ( serialNumber )
-	{	
-		case 1:
-			#if defined(UBRR1H)
-				sim900Serial = &Serial1;
-			#endif
-		break;
-		case 2:
-			#if defined(UBRR2H)
-				sim900Serial = &Serial2;
-			#endif
-		break;
-		case 3:
-			#if defined(UBRR3H)
-				sim900Serial = &Serial3;
-			#endif
-		break;
-		default:
-			sim900Serial = &Serial;
-	}	
-	
+		
+	sim900Serial = &serialPort;
 	sim900Serial->begin( baudRate );
 }
 
