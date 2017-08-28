@@ -8,7 +8,7 @@ char * bodyResponse = NULL;
 void setup()
 { 
   // Init SIM900 library ( PinCode, APN, APN_USER, APN_PASSWORD, ENABLE_PIN, SERIAL )
-  SIM900 = new Connection( "1345", "internet", "", "", 2, 0 );
+  SIM900 = new Connection( "1345", "internet", "", "", 2, Serial );
   
   // Configure SIM900 library
   if ( !SIM900->Configuration() )
